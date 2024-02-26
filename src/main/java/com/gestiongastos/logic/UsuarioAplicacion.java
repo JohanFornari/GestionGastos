@@ -1,15 +1,15 @@
 package com.gestiongastos.logic;
 
-import com.gestiongastos.models.Usuario;
+import com.gestiongastos.models.Persona;
 
-public class UsuarioAplicacion extends UsuarioAbstract implements VistaUsuarioInterface {
+public class UsuarioAplicacion extends Usuario implements VistaUsuarioInterface {
 
-	public UsuarioAplicacion(Usuario usuario) {
+	public UsuarioAplicacion(Persona usuario) {
 		super(usuario);
 	}
 
 	@Override
-	public Usuario actualizarUsuario(Usuario usuario, String direccion, String telefono) {
+	public Persona actualizarUsuario(Persona usuario, String direccion, String telefono) {
 
 		if (usuario.getId() != 0) {
 			usuario.setDireccion(direccion);

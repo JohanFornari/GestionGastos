@@ -2,21 +2,21 @@ package com.gestiongastos.logic;
 
 import java.util.List;
 
-import com.gestiongastos.models.Usuario;
+import com.gestiongastos.models.Persona;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
-public abstract class UsuarioAbstract {
+public abstract class Usuario {
 
-	private Usuario usuario;
+	private Persona usuario;
 
-	public abstract Usuario actualizarUsuario(Usuario usuario, String direccion, String telefono);
+	public abstract Persona actualizarUsuario(Persona usuario, String direccion, String telefono);
 
-	public static boolean verificarUsuario(List<Usuario> usuario, String correo, String password) {
+	public static boolean verificarUsuario(List<Persona> usuario, String correo, String password) {
 
 		if (!correo.isEmpty() && !password.isEmpty()) {
-			for (Usuario u : usuario) {
+			for (Persona u : usuario) {
 				if (u.getEmail().equals(correo)) {
 					Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2i);
 
@@ -30,18 +30,18 @@ public abstract class UsuarioAbstract {
 
 	}
 
-	public UsuarioAbstract(Usuario usuario) {
+	public Usuario(Persona usuario) {
 		this.usuario = usuario;
 	}
 
-	public UsuarioAbstract() {
+	public Usuario() {
 	}
 
-	public Usuario getUsuario() {
+	public Persona getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(Persona usuario) {
 		this.usuario = usuario;
 	}
 

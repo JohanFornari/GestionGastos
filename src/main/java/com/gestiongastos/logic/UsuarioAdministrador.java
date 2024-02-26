@@ -2,11 +2,11 @@ package com.gestiongastos.logic;
 
 import java.util.List;
 
-import com.gestiongastos.models.Usuario;
+import com.gestiongastos.models.Persona;
 
-public class UsuarioAdministrador extends UsuarioAbstract implements VistaUsuarioInterface, ControlUsuarioInterface {
+public class UsuarioAdministrador extends Usuario implements VistaUsuarioInterface, ControlUsuarioInterface {
 
-	public UsuarioAdministrador(Usuario usuario) {
+	public UsuarioAdministrador(Persona usuario) {
 		super(usuario);
 	}
 
@@ -15,7 +15,7 @@ public class UsuarioAdministrador extends UsuarioAbstract implements VistaUsuari
 	}
 
 	@Override
-	public Usuario actualizarUsuario(Usuario usuario, String direccion, String telefono) {
+	public Persona actualizarUsuario(Persona usuario, String direccion, String telefono) {
 
 		if (usuario.getId() != 0) {
 			usuario.setDireccion(direccion);
@@ -34,7 +34,7 @@ public class UsuarioAdministrador extends UsuarioAbstract implements VistaUsuari
 	}
 
 	@Override
-	public boolean actualizarUsuario(Usuario usuario) {
+	public boolean actualizarUsuario(Persona usuario) {
 		if (usuario.getNombre() != "null") {
 			return true;
 		}
@@ -42,7 +42,7 @@ public class UsuarioAdministrador extends UsuarioAbstract implements VistaUsuari
 	}
 
 	@Override
-	public List<Usuario> obtenerUsuarios(List<Usuario> usuarios) {
+	public List<Persona> obtenerUsuarios(List<Persona> usuarios) {
 		if (!usuarios.isEmpty()) {
 			return usuarios;
 		}

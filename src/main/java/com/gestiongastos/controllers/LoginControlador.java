@@ -5,17 +5,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gestiongastos.models.Usuario;
+import com.gestiongastos.models.Persona;
 import com.gestiongastos.services.UsuarioService;
 
 @RestController
-public class LoginController {
+public class LoginControlador {
 
 	@Autowired
 	UsuarioService usuarioService;
 
 	@PostMapping(value = "login")
-	public String verificarUsuario(@RequestBody Usuario user) {
+	public String verificarUsuario(@RequestBody Persona user) {
 		if (usuarioService.verificarUsuario(user.getEmail(), user.getPassword())) {
 			return "OK";
 		} else {

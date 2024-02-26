@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gestiongastos.models.Usuario;
+import com.gestiongastos.models.Persona;
 import com.gestiongastos.services.UsuarioService;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
 @RestController
-public class UsuarioController {
+public class UsuarioControlador {
 	@Autowired
 	private UsuarioService usuarioService;
 
 	@GetMapping(value = "usuario/{id}")
-	public ResponseEntity<Usuario> getUsuario(@PathVariable int id) {
+	public ResponseEntity<Persona> getUsuario(@PathVariable int id) {
 
 		try {
-			Usuario usuario = usuarioService.obtenerUsuario(id);
+			Persona usuario = usuarioService.obtenerUsuario(id);
 			return new ResponseEntity<>(usuario, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,13 +36,13 @@ public class UsuarioController {
 	}
 
 	@GetMapping(value = "usuarios")
-	public List<Usuario> getUsuarios() {
+	public List<Persona> getUsuarios() {
 
 		return usuarioService.listarUsuarios();
 	}
 
 	@PostMapping(value = "usuario")
-	public void crearUsuario(@RequestBody Usuario user) {
+	public void crearUsuario(@RequestBody Persona user) {
 		Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2i);
 		String hash = argon2.hash(1, 1024, 1, user.getPassword());
 		user.setPassword(hash);

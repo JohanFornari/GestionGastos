@@ -9,8 +9,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "usuario")
-public class Usuario {
+@Table(name = "usuarios")
+public class Persona {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -32,7 +32,7 @@ public class Usuario {
 		this.role = role;
 	}
 
-	public Usuario(int id, String nombre, String apellido, String email, String password, String telefono,
+	public Persona(int id, String nombre, String apellido, String email, String password, String telefono,
 			String direccion, Role role) {
 		this.id = id;
 		this.nombre = nombre;
@@ -44,7 +44,7 @@ public class Usuario {
 		this.role = role;
 	}
 
-	public Usuario() {
+	public Persona() {
 		super();
 	}
 

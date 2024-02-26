@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,11 +13,11 @@ import com.gestiongastos.models.Role;
 import com.gestiongastos.repository.RoleRepositorio;
 
 @RestController
-public class RoleController {
+public class RoleControlador {
 	@Autowired
 	private RoleRepositorio roleService;
 
-	@GetMapping(value = "roles")
+	@GetMapping(value = "role")
 	public List<Role> getRoles() {
 
 		return roleService.findAll();
@@ -27,9 +28,9 @@ public class RoleController {
 		roleService.save(role);
 	}
 	
-	@DeleteMapping(value = "role")
-	public void borrarRoles() {
-		roleService.deleteAll();
+	@DeleteMapping(value = "role/{id}")
+	public void borrarRole(@PathVariable int id) {
+		roleService.deleteById(id);
 	}
 	
 }
