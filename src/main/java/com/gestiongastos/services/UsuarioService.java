@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gestiongastos.logic.Usuario;
+import com.gestiongastos.logic.AbsUsuario;
 import com.gestiongastos.logic.UsuarioAdministrador;
-import com.gestiongastos.models.Persona;
+import com.gestiongastos.models.Usuario;
 import com.gestiongastos.repository.UsuarioRepositorio;
 
 @Service
@@ -16,7 +16,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepositorio usuarioRepository;
 
-	public void guardarUsuario(Persona usuario) {
+	public void guardarUsuario(Usuario usuario) {
 		UsuarioAdministrador usuario_especifico;
 		usuario_especifico = new UsuarioAdministrador(usuario);
 		if (usuario_especifico.actualizarUsuario(usuario)) {
@@ -25,15 +25,15 @@ public class UsuarioService {
 
 	}
 
-	public List<Persona> listarUsuarios() {
+	public List<Usuario> listarUsuarios() {
 
-		List<Persona> usuarios = usuarioRepository.findAll();
+		List<Usuario> usuarios = usuarioRepository.findAll();
 		// UsuarioAdministrador usuario_especifico = new UsuarioAdministrador();
 
 		return usuarios;
 	}
 
-	public Persona obtenerUsuario(Integer id) {
+	public Usuario obtenerUsuario(Integer id) {
 
 		return usuarioRepository.findById(id).get();
 	}
@@ -42,13 +42,9 @@ public class UsuarioService {
 		usuarioRepository.deleteById(id);
 	}
 
-	public boolean verificarUsuario(String correo, String password) {
+	public Usuario verificarUsuario(String correo, String password) {
 
-		if (Usuario.verificarUsuario(listarUsuarios(), correo, password)) {
-			return true;
-		}
-
-		return false;
+		return AbsUsuario.verificarUsuario(listarUsuarios(), correo, password);
 
 	}
 

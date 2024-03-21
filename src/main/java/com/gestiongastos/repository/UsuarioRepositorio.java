@@ -2,8 +2,8 @@ package com.gestiongastos.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.gestiongastos.models.Persona;
+import com.gestiongastos.models.Usuario;
 
-public interface UsuarioRepositorio extends JpaRepository<Persona, Integer> {
+public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
 
 }

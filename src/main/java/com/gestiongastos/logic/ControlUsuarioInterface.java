@@ -2,13 +2,13 @@ package com.gestiongastos.logic;
 
 import java.util.List;
 
-import com.gestiongastos.models.Persona;
+import com.gestiongastos.models.Usuario;
 
 public interface ControlUsuarioInterface {
 
-	public List<Persona> obtenerUsuarios(List<Persona> usuarios);
+	public List<Usuario> obtenerUsuarios(List<Usuario> usuarios);
 
-	public boolean actualizarUsuario(Persona usuario);
+	public boolean actualizarUsuario(Usuario usuario);
 
 	public boolean eliminarUsuario(int id_usuario);
 

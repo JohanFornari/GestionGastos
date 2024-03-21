@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
-public class Persona {
+public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -32,7 +32,7 @@ public class Persona {
 		this.role = role;
 	}
 
-	public Persona(int id, String nombre, String apellido, String email, String password, String telefono,
+	public Usuario(int id, String nombre, String apellido, String email, String password, String telefono,
 			String direccion, Role role) {
 		this.id = id;
 		this.nombre = nombre;
@@ -44,7 +44,7 @@ public class Persona {
 		this.role = role;
 	}
 
-	public Persona() {
+	public Usuario() {
 		super();
 	}
 

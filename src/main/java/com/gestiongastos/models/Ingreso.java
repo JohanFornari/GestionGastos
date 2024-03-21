@@ -5,6 +5,7 @@ import java.sql.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,7 @@ public class Ingreso {
 	private int idIngreso;
 	private float valor;
 	private String descripcion;
+	private boolean esMensual;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = ISO.DATE )
 	private Date fechaIngreso; 
@@ -32,23 +34,23 @@ public class Ingreso {
 	private TipoIngreso tipoIngreso;
 	@ManyToOne
 	@JoinColumn(name = "usuarios")
-	private Persona usuario;
+	private Usuario usuario;
 	
 	public Ingreso() {
 		super();
 	}
 	
-	public Ingreso(int idIngreso, float valor, String descripcion, Date fechaIngreso, TipoIngreso tipoIngreso,
-			Persona usuario) {
-		super();
+	public Ingreso(int idIngreso, float valor, String descripcion, boolean esMensual, Date fechaIngreso,
+			TipoIngreso tipoIngreso, Usuario usuario) {
 		this.idIngreso = idIngreso;
 		this.valor = valor;
 		this.descripcion = descripcion;
+		this.esMensual = esMensual;
 		this.fechaIngreso = fechaIngreso;
 		this.tipoIngreso = tipoIngreso;
 		this.usuario = usuario;
 	}
-	
+
 	public int getIdIngreso() {
 		return idIngreso;
 	}
@@ -79,11 +81,19 @@ public class Ingreso {
 	public void setTipoIngreso(TipoIngreso tipoIngreso) {
 		this.tipoIngreso = tipoIngreso;
 	}
-	public Persona getUsuario() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
-	public void setUsuario(Persona usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public boolean isEsMensual() {
+		return esMensual;
+	}
+
+	public void setEsMensual(boolean esMensual) {
+		this.esMensual = esMensual;
 	}
 	
 	
